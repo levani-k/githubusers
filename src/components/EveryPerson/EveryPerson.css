@@ -1,0 +1,51 @@
+.container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+  align-items: center;
+}
+
+@media only screen and (max-width: 420px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  }
+}
+
+.eachPerson {
+  border: 2px solid;
+  padding: 10px;
+  box-shadow: 10px 10px #615e5e;
+  border-radius: 5%;
+}
+
+.everyPersonImg {
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 420px) {
+  .everyPersonImg {
+    width: 50vw;
+    height: auto;
+  }
+}
+.everyPersonLogin {
+  text-decoration: none;
+  color: rgb(69, 69, 248);
+}
+
+.everyPersonLogin:hover {
+  color: blue;
+}
+
+.openProfile {
+  border-radius: 1px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  width: 100px;
+  cursor: pointer;
+  margin: 8px;
+}

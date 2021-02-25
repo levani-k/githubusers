@@ -1,0 +1,28 @@
+.displayFollowers {
+  display: flex;
+  flex-direction: row;
+  margin: 2em;
+  border-bottom: 1px solid #30363d;
+  width: 75vw;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.followersImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.followers_login {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 16px;
+}
+
+.followers_login:hover {
+  color: rgb(69, 80, 243);
+  cursor: pointer;
+}

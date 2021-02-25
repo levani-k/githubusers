@@ -1,0 +1,41 @@
+.repositoriesName {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(69, 69, 248);
+}
+
+.repositoriesName:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.repoDescription {
+  padding-right: 24px !important;
+  margin-bottom: 8px !important;
+  color: #8b949e;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.displayRepositories {
+  margin: 2em;
+  border-bottom: 1px solid rgb(99, 63, 63);
+  width: 75vw;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.repositoriesInfo {
+  color: #8b949e;
+  display: flex;
+  flex-direction: row;
+}
+
+.repositoriesInfo {
+  margin-right: 16px;
+}

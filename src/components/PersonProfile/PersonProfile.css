@@ -1,0 +1,92 @@
+.wholeinfo {
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 1000px) {
+  .wholeinfo {
+    flex-direction: column;
+  }
+
+  .displayFollowers {
+    width: 90% !important;
+  }
+
+  .displayFollowing {
+    width: 90% !important;
+  }
+
+  .displaystarred {
+    width: 90% !important;
+  }
+
+  .displayRepositories {
+    width: 90% !important;
+  }
+}
+
+.buttonsOf_follower_following_starred_repos {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.personInfo {
+  margin-right: 16px;
+}
+
+.personInfo:hover {
+  color: rgb(69, 80, 243);
+  cursor: pointer;
+}
+
+.profilePicture {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .button {
+    float: left;
+    display: inline-block;
+  }
+
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button span:after {
+    content: " \226A";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -50px;
+    transition: 0.5s;
+  }
+
+  .button:hover span {
+    padding-left: 25px;
+  }
+
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+}

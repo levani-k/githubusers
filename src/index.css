@@ -12,9 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-img {
-  height: 25vh;
-  width: 15vw;
-  border-radius: 25%;
-}
