@@ -1,13 +1,13 @@
 .container {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
   align-items: center;
+  justify-content: center;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 600px) {
   .container {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
   }
 }
 
@@ -16,18 +16,14 @@
   padding: 10px;
   box-shadow: 10px 10px #615e5e;
   border-radius: 5%;
+  justify-content: center;
 }
 
 .everyPersonImg {
+  width: 300px;
   border-radius: 50%;
 }
 
-@media only screen and (max-width: 420px) {
-  .everyPersonImg {
-    width: 50vw;
-    height: auto;
-  }
-}
 .everyPersonLogin {
   text-decoration: none;
   color: rgb(69, 69, 248);

@@ -20,7 +20,8 @@ class App extends React.Component {
       displayFollowers: false,
       displayFollowing: false,
       displaystarred: false,
-      displayRepositories: false
+      displayRepositories: false,
+      dark: false
     }
     
   }
@@ -65,7 +66,9 @@ class App extends React.Component {
     this.setState({
       personProfile: false,
       displayFollowers: false,
-      displaystarred: false
+      displayFollowing: false,
+      displaystarred: false,
+      displayRepositories: false
     })
   }
 
@@ -106,8 +109,18 @@ class App extends React.Component {
     const filteredusers = users.filter(user =>{
       return user.login.toLowerCase().includes(searchfield.toLowerCase())
     })
+    let style;
+    this.state.dark ? style={"width": "100%", "height": "100%", "backgroundColor": "#131621"} : style={"width": "100%", "height": "100%", "backgroundColor": "#937f7f"}
     return (
-      <div className='tc'>
+      <div style={style} className='tc'>
+        <div className='web_theme'>
+          <span>☀️</span>
+          <label className="switch">
+            <input type="checkbox" checked={this.state.dark} onChange={() => this.setState({ dark: !this.state.dark })}/>
+            <span className="slider round"></span>
+          </label>
+          <span>🌙</span>
+        </div>
         { this.state.personProfile ? 
           <PersonProfile state={this.state} goToMainPage={this.goToMainPage} display_followers_following_starred={this.display_followers_following_starred} />
           :

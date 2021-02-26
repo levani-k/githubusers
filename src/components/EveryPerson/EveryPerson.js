@@ -4,7 +4,7 @@ import './EveryPerson.css'
 const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, repositories }) => {
     return (
         <div className='tc'>
-            <h1>Github Users</h1>
+            <h1 style={{"marginTop": "0"}}>Github Users</h1>
             <input 
                 style={{margin: '16px',
                       padding: '16px',

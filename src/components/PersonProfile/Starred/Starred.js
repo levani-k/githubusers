@@ -9,7 +9,7 @@ const Starred = ({ starred }) => {
             return(
                 <div key={index} className='displaystarred'>
                 <a className='starredRepoFull_name' href={`https://github.com/${user.full_name}`} target='_blank'>{user.full_name}</a>
-                <p className='starredRepoDescription' style={{"color": "#8b949e"}}>{user.description}</p>
+                <p className='starredRepoDescription'>{user.description}</p>
                 <div className='starredReposInfo'>
                     <p className='reposInfo' >{user.language}</p>
                     <p className='reposInfo' >✩ {user.stargazers_count}</p>
