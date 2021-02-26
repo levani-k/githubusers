@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/githubusers/static/css/main.ea96965b.chunk.css",
-    "main.js": "/githubusers/static/js/main.fb824f17.chunk.js",
-    "main.js.map": "/githubusers/static/js/main.fb824f17.chunk.js.map",
+    "main.css": "/githubusers/static/css/main.6a1bf3ef.chunk.css",
+    "main.js": "/githubusers/static/js/main.5089ccdf.chunk.js",
+    "main.js.map": "/githubusers/static/js/main.5089ccdf.chunk.js.map",
     "runtime-main.js": "/githubusers/static/js/runtime-main.9a6dddc5.js",
     "runtime-main.js.map": "/githubusers/static/js/runtime-main.9a6dddc5.js.map",
     "static/css/2.31461e4f.chunk.css": "/githubusers/static/css/2.31461e4f.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.3b28e206.chunk.js.map": "/githubusers/static/js/3.3b28e206.chunk.js.map",
     "index.html": "/githubusers/index.html",
     "static/css/2.31461e4f.chunk.css.map": "/githubusers/static/css/2.31461e4f.chunk.css.map",
-    "static/css/main.ea96965b.chunk.css.map": "/githubusers/static/css/main.ea96965b.chunk.css.map",
+    "static/css/main.6a1bf3ef.chunk.css.map": "/githubusers/static/css/main.6a1bf3ef.chunk.css.map",
     "static/js/2.2c452f33.chunk.js.LICENSE.txt": "/githubusers/static/js/2.2c452f33.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9a6dddc5.js",
     "static/css/2.31461e4f.chunk.css",
     "static/js/2.2c452f33.chunk.js",
-    "static/css/main.ea96965b.chunk.css",
-    "static/js/main.fb824f17.chunk.js"
+    "static/css/main.6a1bf3ef.chunk.css",
+    "static/js/main.5089ccdf.chunk.js"
   ]
 }
