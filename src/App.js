@@ -17,6 +17,7 @@ class App extends React.Component {
       following: [],
       starred: [],
       repositories: [],
+      organizations: [],
       displayFollowers: false,
       displayFollowing: false,
       displaystarred: false,
@@ -60,6 +61,10 @@ class App extends React.Component {
     fetch(this.state.users[userIndex].repos_url)
     .then(response => response.json())
     .then(data => this.setState({ repositories: data }))
+
+    fetch(this.state.users[userIndex].organizations_url)
+    .then(response => response.json())
+    .then(data => this.setState({ organizations: data }))
   }
 
   goToMainPage = () => {

@@ -4,6 +4,7 @@ import Followers from './Followers/Followers'
 import Following from './Following/Following'
 import Starred from './Starred/Starred'
 import Repositories from './Repositories/Repositories'
+import Organizations from './Organizations/Organizations'
 
 
 const PersonProfile = ({ state, goToMainPage, display_followers_following_starred }) => {
@@ -18,6 +19,8 @@ const PersonProfile = ({ state, goToMainPage, display_followers_following_starre
                   <p className='personInfo' onClick={() => display_followers_following_starred('starred')}>✩ {state.starred.length}</p>
                   <p className='personInfo' onClick={() => display_followers_following_starred('repositories')}>{state.repositories.length} repositories</p>
                 </div>
+                <h1>Organizations</h1>
+                <Organizations organizations={state.organizations}/>
               </div>
                 {
                   state.displayFollowers ? <Followers  followers={state.followers} /> :  <p></p>
