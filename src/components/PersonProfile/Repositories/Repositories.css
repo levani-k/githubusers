@@ -1,3 +1,37 @@
+.repositoriesGrid {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 600px));
+  align-items: center;
+  justify-content: center;
+}
+
+.displayRepositories {
+  margin: 2em;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  border: 1px solid #30363d;
+  border-radius: 1%;
+}
+
+@media only screen and (max-width: 600px) {
+  .repositoriesGrid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+    align-items: center;
+    justify-content: center;
+  }
+
+  .displayRepositories {
+    margin: 1em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #30363d;
+    border-radius: 1%;
+  }
+}
+
 .repositoriesName {
   text-decoration: none;
   font-size: 20px;
@@ -20,14 +54,6 @@
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-}
-
-.displayRepositories {
-  margin: 2em;
-  border-bottom: 1px solid rgb(99, 63, 63);
-  width: 75vw;
-  padding-top: 24px !important;
-  padding-bottom: 24px !important;
 }
 
 .repositoriesInfo {

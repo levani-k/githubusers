@@ -1,5 +1,6 @@
 .container {
   display: grid;
+  grid-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
   align-items: center;
   justify-content: center;
