@@ -7,13 +7,13 @@ import Repositories from './Repositories/Repositories'
 import Organizations from './Organizations/Organizations'
 
 
-const PersonProfile = ({ state, goToMainPage, display_followers_following_starred }) => {
+const PersonProfile = ({ state, goToMainPage, display_followers_following_starred, viewProfile }) => {
     return (
         <div>
           <button className="button" onClick={goToMainPage}><span>Go Back </span></button>
           <div className='wholeinfo'>
             <div>
-              <img className='profilePicture' alt='' title='user profile picture' src={state.userProfile.avatar_url} />
+              <img className='profilePicture' alt='' title='user profile picture' src={state.userProfilePic} />
               <div className='buttonsOf_follower_following_starred_repos'>
                 <p className='personInfo' onClick={() => display_followers_following_starred('followers')}>{state.followers.length} followers</p>
                 <p className='personInfo' onClick={() => display_followers_following_starred('following')}>{state.following.length} following</p>
@@ -24,7 +24,7 @@ const PersonProfile = ({ state, goToMainPage, display_followers_following_starre
               <Organizations organizations={state.organizations}/>
             </div>
               {
-                state.displayFollowers ? <Followers  followers={state.followers} /> 
+                state.displayFollowers ? <Followers  followers={state.followers} viewProfile={viewProfile}/> 
                 : state.displayFollowing ? <Following  following={state.following} /> 
                 : state.displaystarred ? <Starred starred={state.starred} /> 
                 : state.displayRepositories ? <Repositories repositories={state.repositories} /> 

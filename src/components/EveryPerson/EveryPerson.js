@@ -1,7 +1,7 @@
 import React from "react";
 import './EveryPerson.css'
 
-const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, repositories }) => {
+const EveryPerson = ({ onSearchChange, filteredusers, viewProfile }) => {
     return (
         <div className='tc'>
             <h1 style={{"marginTop": "0"}}>Github Users</h1>
@@ -26,7 +26,7 @@ const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, repositories 
                     <img className='everyPersonImg' alt='' src={user.avatar_url} /><br />
                     <a className='everyPersonLogin' href={user.html_url} target='_blank' >{user.login}</a>
                     <br />
-                    <button className='openProfile' value={index} onClick={viewProfile}>view profile</button>
+                    <button className='openProfile' value={user.login} onClick={viewProfile}>view profile</button>
                   </div>
                 )
               })

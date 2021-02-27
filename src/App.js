@@ -12,7 +12,7 @@ class App extends React.Component {
       users: [],
       searchfield: '',
       personProfile: false,
-      userProfile: {},
+      userProfilePic: '',
       followers: [],
       following: [],
       starred: [],
@@ -38,33 +38,34 @@ class App extends React.Component {
   }
 
   viewProfile = (event) => {
-    const userIndex = event.target.value
-    this.setState({
-      personProfile: true,
-      userProfile: this.state.users[userIndex]
+
+    fetch(`https://api.github.com/users/${event.target.value}`)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({ personProfile: true, userProfilePic: data.avatar_url })
+
+      fetch(data.followers_url)
+      .then(response => response.json())
+      .then(data => this.setState({ followers: data }))
+
+      const following_users = data.following_url.slice(0, data.following_url.length - 13)
+      fetch(following_users)
+      .then(response => response.json())
+      .then(data => this.setState({ following: data }))
+
+      const starred_url = data.starred_url.slice(0, data.starred_url.length - 15)
+      fetch(starred_url)
+      .then(response => response.json())
+      .then(data => this.setState({ starred: data }))
+
+      fetch(data.repos_url)
+      .then(response => response.json())
+      .then(data => this.setState({ repositories: data }))
+
+      fetch(data.organizations_url)
+      .then(response => response.json())
+      .then(data => this.setState({ organizations: data }))
     })
-
-    fetch(this.state.users[userIndex].followers_url)
-    .then(response => response.json())
-    .then(data => this.setState({ followers: data }))
-
-    const following_users = this.state.users[userIndex].following_url.slice(0, this.state.users[userIndex].following_url.length - 13)
-    fetch(following_users)
-    .then(response => response.json())
-    .then(data => this.setState({ following: data }))
-
-    const starred_url = this.state.users[userIndex].starred_url.slice(0, this.state.users[userIndex].starred_url.length - 15)
-    fetch(starred_url)
-    .then(response => response.json())
-    .then(data => this.setState({ starred: data }))
-
-    fetch(this.state.users[userIndex].repos_url)
-    .then(response => response.json())
-    .then(data => this.setState({ repositories: data }))
-
-    fetch(this.state.users[userIndex].organizations_url)
-    .then(response => response.json())
-    .then(data => this.setState({ organizations: data }))
   }
 
   goToMainPage = () => {
@@ -127,7 +128,7 @@ class App extends React.Component {
           <span>🌙</span>
         </div>
         { this.state.personProfile ? 
-          <PersonProfile state={this.state} goToMainPage={this.goToMainPage} display_followers_following_starred={this.display_followers_following_starred} />
+          <PersonProfile state={this.state} goToMainPage={this.goToMainPage} display_followers_following_starred={this.display_followers_following_starred} viewProfile={this.viewProfile} />
           :
           <EveryPerson onSearchChange={this.onSearchChange} filteredusers={filteredusers} viewProfile={this.viewProfile} />
         }
