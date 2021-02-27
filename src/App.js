@@ -34,37 +34,37 @@ class App extends React.Component {
   componentDidMount() {
     fetch('https://api.github.com/users')
     .then(response => response.json())
-    .then(data => this.setState({ users: data }))
+    .then(allUsers => this.setState({ users: allUsers }))
   }
 
   viewProfile = (event) => {
 
     fetch(`https://api.github.com/users/${event.target.value}`)
     .then(response => response.json())
-    .then(data => {
-      this.setState({ personProfile: true, userProfilePic: data.avatar_url })
+    .then(singleUser => {
+      this.setState({ personProfile: true, userProfilePic: singleUser.avatar_url })
 
-      fetch(data.followers_url)
+      fetch(singleUser.followers_url)
       .then(response => response.json())
-      .then(data => this.setState({ followers: data }))
+      .then(singleUser => this.setState({ followers: singleUser }))
 
-      const following_users = data.following_url.slice(0, data.following_url.length - 13)
+      const following_users = singleUser.following_url.slice(0, singleUser.following_url.length - 13)
       fetch(following_users)
       .then(response => response.json())
-      .then(data => this.setState({ following: data }))
+      .then(singleUser => this.setState({ following: singleUser }))
 
-      const starred_url = data.starred_url.slice(0, data.starred_url.length - 15)
+      const starred_url = singleUser.starred_url.slice(0, singleUser.starred_url.length - 15)
       fetch(starred_url)
       .then(response => response.json())
-      .then(data => this.setState({ starred: data }))
+      .then(singleUser => this.setState({ starred: singleUser }))
 
-      fetch(data.repos_url)
+      fetch(singleUser.repos_url)
       .then(response => response.json())
-      .then(data => this.setState({ repositories: data }))
+      .then(singleUser => this.setState({ repositories: singleUser }))
 
-      fetch(data.organizations_url)
+      fetch(singleUser.organizations_url)
       .then(response => response.json())
-      .then(data => this.setState({ organizations: data }))
+      .then(singleUser => this.setState({ organizations: singleUser }))
     })
   }
 

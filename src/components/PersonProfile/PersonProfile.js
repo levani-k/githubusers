@@ -25,7 +25,7 @@ const PersonProfile = ({ state, goToMainPage, display_followers_following_starre
             </div>
               {
                 state.displayFollowers ? <Followers  followers={state.followers} viewProfile={viewProfile}/> 
-                : state.displayFollowing ? <Following  following={state.following} /> 
+                : state.displayFollowing ? <Following  following={state.following} viewProfile={viewProfile}/> 
                 : state.displaystarred ? <Starred starred={state.starred} /> 
                 : state.displayRepositories ? <Repositories repositories={state.repositories} /> 
                 : <Repositories repositories={state.repositories} />

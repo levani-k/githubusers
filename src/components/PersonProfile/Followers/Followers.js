@@ -13,7 +13,7 @@ const Followers = ({ followers, viewProfile }) => {
                 return(
                     <div key={index} className='displayFollowers'>
                         <img alt="" src={user.avatar_url} className='followersImg' />
-                        <button value={user.login} onClick={viewProfile} >{user.login}</button>
+                        <button className='followers_login' value={user.login} onClick={viewProfile} >{user.login}</button>
                     </div>
                 )
                 })

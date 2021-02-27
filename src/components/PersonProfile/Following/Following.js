@@ -3,7 +3,7 @@ import './Following.css'
 
 
 
-const Following = ({ following }) => {
+const Following = ({ following, viewProfile }) => {
     return(
         <div>
             <h1>Following</h1>
@@ -13,7 +13,7 @@ const Following = ({ following }) => {
                 return(
                     <div key={index} className='displayFollowing'>
                     <img alt="" src={user.avatar_url} className='followingPersonImg' />
-                    <a href={user.html_url} className='followingPerson_login' target='_blank'>{user.login}</a>
+                    <button className='followingPerson_login' value={user.login} onClick={viewProfile} >{user.login}</button>
                     </div>
                 )
                 })
