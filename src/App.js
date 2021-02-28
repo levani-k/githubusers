@@ -121,7 +121,8 @@ class App extends React.Component {
       displayFollowers: false,
       displayFollowing: false,
       displaystarred: false,
-      displayRepositories: false
+      displayRepositories: false,
+      searchfield: ''
     })
   }
 
