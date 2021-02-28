@@ -1,7 +1,7 @@
 import React from "react";
 import './EveryPerson.css'
 
-const EveryPerson = ({ onSearchChange, filteredusers, viewProfile }) => {
+const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, inputOnClick }) => {
     return (
         <div className='tc'>
             <h1 style={{"marginTop": "0"}}>Github Users</h1>
@@ -12,10 +12,12 @@ const EveryPerson = ({ onSearchChange, filteredusers, viewProfile }) => {
                       borderRadius: '5px',
                       boxShadow: '0 2px 5px #000'
                     }}
+              id='userName'
               className='pa3 ba b--green bg-lighest-blue' 
               type='search' 
               placeholder='search user' 
               onChange={onSearchChange}
+              onClick={inputOnClick}
           />
           <br />
           <div className='container'>

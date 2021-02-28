@@ -31,6 +31,53 @@ class App extends React.Component {
     this.setState({ searchfield: event.target.value})
   }
 
+  filteredusers = () => {
+    const { users, searchfield} = this.state
+    const filteredusers = users.filter(user =>{
+      return user.login.toLowerCase().includes(searchfield.toLowerCase())
+    })
+
+    return filteredusers
+  }
+
+  inputOnClick = (event) => {
+    let input = document.getElementById("userName");
+    input.addEventListener("keyup", event => {
+      if (event.key === "Enter") {
+        let user = this.filteredusers()
+        if(user.length === 1) {
+          fetch(`https://api.github.com/users/${user[0].login}`)
+          .then(response => response.json())
+          .then(singleUser => {
+            this.setState({ personProfile: true, userProfilePic: singleUser.avatar_url })
+
+            fetch(singleUser.followers_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ followers: singleUser }))
+
+            const following_users = singleUser.following_url.slice(0, singleUser.following_url.length - 13)
+            fetch(following_users)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ following: singleUser }))
+
+            const starred_url = singleUser.starred_url.slice(0, singleUser.starred_url.length - 15)
+            fetch(starred_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ starred: singleUser }))
+
+            fetch(singleUser.repos_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ repositories: singleUser }))
+
+            fetch(singleUser.organizations_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ organizations: singleUser }))
+          })
+        }
+      }
+    });
+  }
+
   componentDidMount() {
     fetch('https://api.github.com/users')
     .then(response => response.json())
@@ -111,10 +158,6 @@ class App extends React.Component {
   }
   
   render() {
-    const { users, searchfield} = this.state
-    const filteredusers = users.filter(user =>{
-      return user.login.toLowerCase().includes(searchfield.toLowerCase())
-    })
     let style;
     this.state.dark ? style={"width": "100%", "height": "100%", "backgroundColor": "#131621"} : style={"width": "100%", "height": "100%", "backgroundColor": "#937f7f"}
     return (
@@ -130,7 +173,7 @@ class App extends React.Component {
         { this.state.personProfile ? 
           <PersonProfile state={this.state} goToMainPage={this.goToMainPage} display_followers_following_starred={this.display_followers_following_starred} viewProfile={this.viewProfile} />
           :
-          <EveryPerson onSearchChange={this.onSearchChange} filteredusers={filteredusers} viewProfile={this.viewProfile} />
+          <EveryPerson onSearchChange={this.onSearchChange} filteredusers={this.filteredusers()} viewProfile={this.viewProfile} inputOnClick={this.inputOnClick}/>
         }
       </div>
     );
