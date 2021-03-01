@@ -5,6 +5,7 @@ const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, inputOnClick 
     return (
         <div className='tc'>
             <h1 style={{"marginTop": "0"}}>Github Users</h1>
+            <p>Here is displayed some profiles but you can search for any github user, if you search for someone who is not displayed here you need to type whole name</p>
             <input 
                 style={{margin: '16px',
                       padding: '16px',
@@ -24,7 +25,7 @@ const EveryPerson = ({ onSearchChange, filteredusers, viewProfile, inputOnClick 
             {
               filteredusers.map((user, index) => {
                 return(
-                  <div key={user.id} className='eachPerson'>
+                  <div key={user.login} className='eachPerson'>
                     <img className='everyPersonImg' alt='' src={user.avatar_url} /><br />
                     <a className='everyPersonLogin' href={user.html_url} target='_blank' >{user.login}</a>
                     <br />

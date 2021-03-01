@@ -6,6 +6,8 @@ const Repositories = ({ repositories }) => {
     return (
         <div>
             <h1>Repositories</h1>
+            {
+                repositories.length > 0 ?
             <div className='repositoriesGrid'>
                 {
                     repositories.map((repo, key) => {
@@ -24,6 +26,8 @@ const Repositories = ({ repositories }) => {
                     })
                 }
             </div>
+            : <p>can't display repositories</p>
+            }
         </div>
     )
 }

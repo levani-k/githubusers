@@ -27,18 +27,34 @@ class App extends React.Component {
     
   }
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value})
-  }
-
   filteredusers = () => {
     const { users, searchfield} = this.state
     const filteredusers = users.filter(user =>{
-      return user.login.toLowerCase().includes(searchfield.toLowerCase())
+      return user.login.includes(searchfield)
     })
 
     return filteredusers
   }
+
+
+  onSearchChange = (event) => {
+    this.setState({ searchfield: event.target.value})
+    fetch(`https://api.github.com/users/${event.target.value}`)
+    .then(response => response.json())
+    .then(singleUser => {
+      let triger = true
+      for (let index = 0; index < this.state.users.length; index++) {
+        if (this.state.users[index].login === singleUser.login) {
+          triger = false
+        }
+      }
+      if (triger) {
+        this.state.users.push(singleUser)
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
 
   inputOnClick = (event) => {
     let input = document.getElementById("userName");
@@ -47,6 +63,34 @@ class App extends React.Component {
         let user = this.filteredusers()
         if(user.length === 1) {
           fetch(`https://api.github.com/users/${user[0].login}`)
+          .then(response => response.json())
+          .then(singleUser => {
+            this.setState({ personProfile: true, userProfilePic: singleUser.avatar_url })
+
+            fetch(singleUser.followers_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ followers: singleUser }))
+
+            const following_users = singleUser.following_url.slice(0, singleUser.following_url.length - 13)
+            fetch(following_users)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ following: singleUser }))
+
+            const starred_url = singleUser.starred_url.slice(0, singleUser.starred_url.length - 15)
+            fetch(starred_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ starred: singleUser }))
+
+            fetch(singleUser.repos_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ repositories: singleUser }))
+
+            fetch(singleUser.organizations_url)
+            .then(response => response.json())
+            .then(singleUser => this.setState({ organizations: singleUser }))
+          })
+        } else {
+          fetch(`https://api.github.com/users/${input.value}`)
           .then(response => response.json())
           .then(singleUser => {
             this.setState({ personProfile: true, userProfilePic: singleUser.avatar_url })
@@ -85,7 +129,6 @@ class App extends React.Component {
   }
 
   viewProfile = (event) => {
-
     fetch(`https://api.github.com/users/${event.target.value}`)
     .then(response => response.json())
     .then(singleUser => {
