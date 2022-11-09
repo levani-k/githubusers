@@ -39,7 +39,7 @@ class App extends React.Component {
 
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value})
-    fetch(`https://api.github.com/users/${event.target.value}`)
+    fetch(encodeURI(`https://api.github.com/users/${event.target.value}`))
     .then(response => response.json())
     .then(singleUser => {
       let triger = true
